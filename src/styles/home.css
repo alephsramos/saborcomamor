@@ -144,7 +144,7 @@ header nav ul a:hover {
     }
 
     header div img {
-        width: 50px;
+        width: 60px;
     }
 
     header nav ul a {
@@ -160,7 +160,7 @@ header nav ul a:hover {
     }
 
     .home .buttonStyle2 {
-        padding: 8px 20px; /* Adjusted padding for buttons */
+        padding: 12px 40px; /* Adjusted padding for buttons */
         font-size: 0.9rem; /* Adjusted font size for buttons */
     }
 }
@@ -175,19 +175,19 @@ header nav ul a:hover {
     }
 
     header div img {
-        width: 40px; /* Further reduced image size */
+        width: 60px; /* Further reduced image size */
     }
 
     .home h1 {
-        font-size: 3em; /* Further reduced font size */
+        font-size: 3.5em; /* Further reduced font size */
     }
 
     .home p {
-        font-size: 0.9rem; /* Further reduced font size */
+        font-size: 0.7rem; /* Further reduced font size */
     }
 
     .home .buttonStyle2 {
-        padding: 6px 15px; /* Adjusted padding for buttons */
-        font-size: 0.8rem; /* Further adjusted font size for buttons */
+        padding: 10px 15px; /* Adjusted padding for buttons */
+        font-size: 1rem; /* Further adjusted font size for buttons */
     }
 }

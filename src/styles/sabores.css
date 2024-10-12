@@ -132,6 +132,7 @@
 
     .saborContainer {
         justify-content: center; /* Centraliza os itens em telas menores */
+        gap: 25px;
     }
 
     .sabor {

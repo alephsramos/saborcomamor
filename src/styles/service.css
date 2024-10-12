@@ -75,23 +75,24 @@
 
     .service div {
         width: 80%; /* Aumenta a largura para 80% em telas menores */
-        padding: 15px; /* Ajusta o padding */
+        padding: 35px; /* Ajusta o padding */
         gap: 30px; /* Reduz o espaço entre os elementos */
     }
 
     .service div i {
         font-size: 4rem; /* Reduzido para telas menores */
-        width: 150px; /* Reduz o tamanho do ícone */
-        height: 150px; /* Reduz o tamanho do ícone */
+        width: 120px; /* Reduz o tamanho do ícone */
+        height: 120px; /* Reduz o tamanho do ícone */
     }
 
     .service div p {
         font-size: 1.2rem; /* Reduzido para telas menores */
+        width: 100%;
     }
 
     .service div button {
         font-size: 1rem; /* Reduzido para telas menores */
-        width: 70%; /* Ajusta a largura do botão */
+        width: 100%; /* Ajusta a largura do botão */
     }
 }
 
@@ -110,8 +111,8 @@
 
     .service div i {
         font-size: 3rem; /* Reduzido para telas muito pequenas */
-        width: 120px; /* Reduz o tamanho do ícone */
-        height: 120px; /* Reduz o tamanho do ícone */
+        width: 100px; /* Reduz o tamanho do ícone */
+        height: 100px; /* Reduz o tamanho do ícone */
     }
 
     .service div p {
