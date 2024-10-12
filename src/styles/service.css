@@ -1,0 +1,125 @@
+.service {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.service h1 {
+    font-size: 3rem;
+    font-family: "Dancing Script", cursive;
+}
+
+.service hr {
+    width: 100px;
+    border-color: orange;
+    margin-top: -50px;
+    background-color: orange;
+}
+
+.service div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+    width: 50%;
+    border: 1px solid #353535;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 5px #000;
+}
+
+.service div i {
+    font-size: 5rem;
+    background-color: #353535;
+    width: 200px;
+    border-radius: 50%;
+    color: #fbfbfb;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service div p {
+    font-size: 1.4rem;
+    width: 70%;
+    text-align: justify;
+}
+
+.service div button {
+    padding: 20px 15px;
+    width: 50%;
+    font-size: 1.2rem;
+    background-color: orange;
+    color: #fbfbfb;
+    border: 1px solid #fbfbfb;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform .1s ease-in;
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    .service {
+        padding: 0 3%; /* Reduzindo o padding lateral */
+    }
+
+    .service h1 {
+        font-size: 2.5rem; /* Reduzido para telas menores */
+    }
+
+    .service div {
+        width: 80%; /* Aumenta a largura para 80% em telas menores */
+        padding: 15px; /* Ajusta o padding */
+        gap: 30px; /* Reduz o espaço entre os elementos */
+    }
+
+    .service div i {
+        font-size: 4rem; /* Reduzido para telas menores */
+        width: 150px; /* Reduz o tamanho do ícone */
+        height: 150px; /* Reduz o tamanho do ícone */
+    }
+
+    .service div p {
+        font-size: 1.2rem; /* Reduzido para telas menores */
+    }
+
+    .service div button {
+        font-size: 1rem; /* Reduzido para telas menores */
+        width: 70%; /* Ajusta a largura do botão */
+    }
+}
+
+@media (max-width: 480px) {
+    .service {
+        padding: 0 2%; /* Reduzindo ainda mais o padding lateral */
+    }
+
+    .service h1 {
+        font-size: 2rem; /* Reduzido para telas muito pequenas */
+    }
+
+    .service div {
+        width: 95%; /* Faz a div ocupar quase toda a largura */
+    }
+
+    .service div i {
+        font-size: 3rem; /* Reduzido para telas muito pequenas */
+        width: 120px; /* Reduz o tamanho do ícone */
+        height: 120px; /* Reduz o tamanho do ícone */
+    }
+
+    .service div p {
+        font-size: 1rem; /* Reduzido para telas muito pequenas */
+    }
+
+    .service div button {
+        font-size: 0.9rem; /* Ajustando o tamanho da fonte do botão */
+    }
+}

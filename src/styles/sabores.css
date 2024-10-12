@@ -1,0 +1,143 @@
+.sabores {
+    height: 80vh;
+    width: 100%;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.saboresTitle {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.saboresTitle h1 {
+    font-size: 3rem;
+    font-family: "Dancing Script", cursive;
+}
+
+.saboresTitle hr {
+    width: 100px;
+    background-color: orange;
+    border-color: orange;
+}
+
+.saborContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap; /* Permite que os itens quebrem linha se necessário */
+}
+
+.sabor {
+    border: 1px solid #353535;
+    border-radius: 10px;
+    padding: 10px;
+    width: 24%;
+    height: 50vh;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sabor img {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.sabor h2 {
+    font-size: 2rem;
+    font-family: "Dancing Script", cursive;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0;
+}
+
+.sabor ol {
+    list-style-type: disc;
+    margin-left: 20px;
+    height: 15%;
+}
+
+.sabor ol li {
+    font-size: 16px;
+}
+
+.sabor button {
+    padding: 7px 15px;
+    height: 15%;
+    width: 100%;
+    margin-top: 20px;
+    background-color: orange;
+    color: #fbfbfb;
+    border: 1px solid #fbfbfb;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform .1s ease-in;
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    .sabores {
+        padding: 0 3%; /* Reduzindo o padding lateral */
+        margin-top: 100vh;
+        height: 200vh;
+    }
+
+    .saboresTitle h1 {
+        font-size: 2.5rem; /* Reduzido para telas menores */
+    }
+
+    .saborContainer {
+        justify-content: center; /* Centraliza os itens em telas menores */
+    }
+
+    .sabor {
+        width: 45%; /* Aumenta a largura para 2 colunas */
+        height: 50vh; /* Permite que a altura se ajuste automaticamente */
+    }
+
+    .sabor h2 {
+        font-size: 1.5rem; /* Reduzido para telas menores */
+    }
+}
+
+@media (max-width: 480px) {
+    .sabores {
+        padding: 0 2%; /* Reduzindo ainda mais o padding lateral */
+    }
+
+    .saboresTitle h1 {
+        font-size: 2rem; /* Reduzido para telas muito pequenas */
+    }
+
+    .sabor {
+        width: 90%; /* Faz os itens ocuparem quase toda a largura */
+    }
+
+    .sabor h2 {
+        font-size: 1.2rem; /* Reduzido para telas muito pequenas */
+    }
+
+    .sabor ol li {
+        font-size: 14px; /* Reduzido para telas muito pequenas */
+    }
+
+    .sabor button {
+        font-size: 0.9rem; /* Ajustando o tamanho da fonte do botão */
+    }
+}

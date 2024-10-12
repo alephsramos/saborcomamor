@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/styles/home.css">
+    <link rel="stylesheet" href="src/styles/comidas.css">
+    <link rel="stylesheet" href="src/styles/sabores.css">
+    <link rel="stylesheet" href="src/styles/sobre.css">
+    <link rel="stylesheet" href="src/styles/promo.css">
+    <link rel="stylesheet" href="src/styles/service.css">
+    <link rel="stylesheet" href="src/styles/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css"> <!-- Link AOS -->
+    <title>Sabor do Amor | Delivery</title>
+</head>
+<body>
+    <script>
+        function enviarMensagem(mensagem) {
+            const numero = "+5583981451697"; // Seu número de WhatsApp
+            const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+            window.open(url, '_blank'); // Abre o WhatsApp em uma nova aba
+        }
+    </script>
+
+    <header data-aos="fade-down">
+        <div data-aos="fade-right">
+            <img src="src/images/logo.jpg" alt="logo sabor do amor">
+        </div>
+        <nav data-aos="fade-left">
+            <ul>
+                <a href="#">Inicio</a>
+                <a href="./nhoque.html">Nhoque</a>
+                <a href="./lasanha.html">Lasanha</a>
+                <a href="./empada.html">Empadão</a>
+                <a href="./salgados.html">Salgados</a>
+                <a href="#sobrenos">Sobre nós</a>
+                <a href="#contato">Contato</a>
+            </ul>
+        </nav>
+        <button class="buttonStyle" onclick="enviarMensagem('Olá, vim do site, gostaria de fazer um pedido!')" data-aos="fade-up">Fazer meu pedido agora!</button>
+    </header>
+
+    <div class="home" data-aos="zoom-in">
+        <h1 data-aos="fade-up">Sabor com Amor</h1>
+        <p data-aos="fade-up">O sabor que chega com carinho até você!</p>
+        <button class="buttonStyle2" onclick="enviarMensagem('Olá, vim do site, gostaria de fazer um pedido!')" data-aos="fade-up">Fazer meu pedido agora!</button>
+    </div>
+
+    <section class="comidas" data-aos="fade-up">
+        <div class="comidaTitle" data-aos="fade-up">
+            <h1>Sabor com Amor</h1>
+            <hr>
+        </div>
+
+        <div class="comidaComidas" data-aos="fade-up">
+            <div data-aos="fade-up">
+                <h2>Nhoque</h2>
+                <button onclick="enviarMensagem('Olá, vim do site, gostaria de fazer um pedido!')">Pedir agora!</button>
+            </div>
+            <div data-aos="fade-up">
+                <h2>Lasanha</h2>
+                <button onclick="enviarMensagem('Olá, vim do site, gostaria de fazer um pedido!')">Pedir agora!</button>
+            </div>
+            <div data-aos="fade-up">
+                <h2>Empadão</h2>
+                <button onclick="enviarMensagem('Olá, vim do site, gostaria de fazer um pedido!')">Pedir agora!</button>
+            </div>
+            <div data-aos="fade-up">
+                <h2>Salgados</h2>
+                <button onclick="enviarMensagem('Olá, vim do site, gostaria de fazer um pedido!')">Pedir agora!</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="sabores" data-aos="fade-up">
+        <div class="saboresTitle" data-aos="fade-up">
+            <h1>Nossos sabores</h1>
+            <hr>
+        </div>
+
+        <div class="saborContainer" data-aos="fade-up">
+            <div class="sabor" data-aos="fade-up">
+                <img src="/src/images/nhoque.jpg" alt="Foto do nhoque">
+                <h2>Nhoque</h2>
+                <ol>
+                    <li>Bolonhesa</li>
+                    <li>4 Queijos</li>
+                    <li>Calabresa</li>
+                    <li>Frango</li>
+                </ol>
+                <button onclick="enviarMensagem('Olá, vim do site, gostaria de fazer um pedido!')">Pedir agora!</button>
+            </div>
+
+            <div class="sabor" data-aos="fade-up">
+                <img src="/src/images/lasanha.jpg" alt="Foto do nhoque">
+                <h2>Lasanha</h2>
+                <ol>
+                    <li>Bolonhesa</li>
+                    <li>4 Queijos</li>
+                    <li>Calabresa</li>
+                    <li>Frango</li>
+                </ol>
+                <button onclick="enviarMensagem('Olá, vim do site, gostaria de fazer um pedido!')">Pedir agora!</button>
+            </div>
+
+            <div class="sabor" data-aos="fade-up">
+                <img src="/src/images/empadao.jpg" alt="Foto do nhoque">
+                <h2>Empadão</h2>
+                <ol>
+                    <li>Bolonhesa</li>
+                    <li>4 Queijos</li>
+                    <li>Calabresa</li>
+                    <li>Frango</li>
+                </ol>
+                <button onclick="enviarMensagem('Olá, vim do site, gostaria de fazer um pedido!')">Pedir agora!</button>
+            </div>
+
+            <div class="sabor" data-aos="fade-up">
+                <img src="/src/images/salagados.jpg" alt="Foto do nhoque">
+                <h2>Salgados</h2>
+                <ol>
+                    <li>Empada</li>
+                    <li>Coxinha (Frango)</li>
+                    <li>Risole</li>
+                    <li>Folheado (Frango, Calabresa e 4 Queijos)</li>
+                </ol>
+                <button onclick="enviarMensagem('Olá, vim do site, gostaria de fazer um pedido!')">Pedir agora!</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="sobre" id="sobrenos" data-aos="fade-up">
+        <div>
+            <h1>Quem somos nós?</h1>
+            <hr>
+            <p>Sabor com Amor se dedica a oferecer experiências culinárias inesquecíveis para todos os amantes da boa comida. Com uma equipe de chefs e ingredientes selecionados, garantimos pratos que encantam pelo sabor e apresentação.</p>
+        </div>
+    </section>
+
+    <section class="promo" data-aos="fade-up">
+        <main>
+            <h1>Promoção Especial</h1>
+            <hr>
+            <div data-aos="fade-up">
+                <img src="/src/images/empadao.jpg" alt="Foto do nhoque">
+                <h2>Empadão</h2>
+                <ol>
+                    <li>Bolonhesa</li>
+                    <li>4 Queijos</li>
+                    <li>Calabresa</li>
+                    <li>Frango</li>
+                </ol>
+                <button onclick="enviarMensagem('Olá, vim do site, gostaria de fazer um pedido!')">Pedir agora!</button>
+            </div>
+        </main>
+    </section>
+
+    <section class="service" data-aos="fade-up">
+        <h1>Delivery</h1>
+        <hr>
+        <div data-aos="fade-up">
+            <i class="fa-solid fa-motorcycle"></i>
+            <p>No Sabor com Amor, entregamos nossas delícias até você! Peça pelo delivery e aproveite o sabor e carinho de nossa cozinha no conforto da sua casa.</p>
+            <button onclick="enviarMensagem('Olá, vim do site, gostaria de fazer um pedido!')">Fazer pedido agora!</button>
+        </div>
+    </section>
+
+    <footer id="contato" data-aos="fade-up">
+        <h2>Estamos localizados em:</h2>
+        <aside data-aos="fade-up">
+            <p>Avenida Governador Antonio da Silva Mariz - Portal do Sol, João Pessoa - PB, Brasil</p>
+            <p>Cep: 58046518</p>
+            <br>
+            <a href="https://wa.me/+5583981451697?text=Olá,%20gostaria%20de%20mais%20informações!" target="_blank"> <i class="fa-solid fa-phone"></i> +55 83 98145-1697 - Sabor com Amor</a>
+            <a href="mailto:paulinholiracompositor@gmail.com"> <i class="fa-solid fa-envelope"></i> paulinholiracompositor@gmail.com</a><br><br>
+            <p> <i class="fa-solid fa-clock"></i> Terça à Domingo das 10:00 às 21:00</p>
+        </aside>
+
+        <br><br>
+        <p>Todos os direitos reservados | &copy 2024</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+    <script>
+        AOS.init(); // Inicializa o AOS
+    </script>
+</body>
+</html>

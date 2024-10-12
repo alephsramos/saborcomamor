@@ -1,0 +1,78 @@
+footer {
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #353535;
+    color: #fbfbfb;
+    flex-direction: column;
+    gap: 50px;
+}
+
+footer h2 {
+    font-size: 5rem;
+    font-family: "Dancing Script", cursive;
+}
+
+footer aside {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+footer aside p {
+    text-align: center;
+    font-size: 1.2rem;
+    width: 70%;
+}
+
+footer aside a {
+    color: #fbfbfb;
+    font-size: 1.1rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    footer {
+        height: 70dvh; /* Permite que a altura se ajuste automaticamente */
+        padding: 0 3%; /* Reduzindo o padding lateral */
+        gap: 30px; /* Reduz o espaço entre os elementos */
+    }
+
+    footer h2 {
+        font-size: 2rem; /* Reduzido para telas menores */
+    }
+
+    footer aside p {
+        font-size: 1rem; /* Reduzido para telas menores */
+        width: 90%; /* Aumenta a largura para 90% em telas menores */
+    }
+
+    footer aside a {
+        font-size: 1rem; /* Reduzido para telas menores */
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        padding: 0 2%; /* Reduzindo ainda mais o padding lateral */
+    }
+
+    footer h2 {
+        font-size: 2.5rem; /* Reduzido para telas muito pequenas */
+    }
+
+    footer aside p {
+        font-size: 0.9rem; /* Reduzido para telas muito pequenas */
+    }
+
+    footer aside a {
+        font-size: 0.9rem; /* Ajustando o tamanho da fonte do link */
+    }
+}

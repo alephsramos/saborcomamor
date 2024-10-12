@@ -1,0 +1,82 @@
+.sobre {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    padding: 0 5%;
+    justify-content: center;
+    flex-direction: column;
+    background-image: url('../images/backComidas.jpg');
+    background-size: cover;
+    margin-top: 10vh;
+    background-attachment: fixed;
+}
+
+.sobre div {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px 50px;
+    height: 50%;
+    background-color: #fbfbfb;
+}
+
+.sobre div h1 {
+    font-size: 3rem;
+    font-family: "Dancing Script", cursive;
+}
+
+.sobre div hr {
+    width: 100px;
+    background-color: orange;
+    border-color: orange;
+    margin-top: -20px;
+}
+
+.sobre div p {
+    font-size: 18px;
+    width: 80%;
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    .sobre {
+        padding: 0 3%; /* Reduzindo o padding lateral */
+        margin-top: 20vh;
+    }
+
+    .sobre div {
+        width: 80%; /* Aumenta a largura para 80% em telas menores */
+        padding: 10px 20px; /* Ajusta o padding */
+        height: 50vh; /* Permite que a altura se ajuste automaticamente */
+    }
+
+    .sobre div h1 {
+        font-size: 2.5rem; /* Reduzido para telas menores */
+    }
+
+    .sobre div p {
+        font-size: 16px; /* Reduzido para telas menores */
+    }
+}
+
+@media (max-width: 480px) {
+    .sobre {
+        padding: 0 2%; /* Reduzindo ainda mais o padding lateral */
+    }
+
+    .sobre div {
+        width: 95%; /* Faz a div ocupar quase toda a largura */
+    }
+
+    .sobre div h1 {
+        font-size: 2rem; /* Reduzido para telas muito pequenas */
+    }
+
+    .sobre div p {
+        font-size: 14px; /* Reduzido para telas muito pequenas */
+    }
+}
