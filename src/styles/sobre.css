@@ -10,6 +10,7 @@
     background-size: cover;
     margin-top: 10vh;
     background-attachment: fixed;
+    clip-path: polygon(2% 2%, 98% 2%, 98% 98%, 2% 98%);
 }
 
 .sobre div {

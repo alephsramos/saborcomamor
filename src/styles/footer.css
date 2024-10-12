@@ -6,6 +6,7 @@ footer {
     background-color: #353535;
     color: #fbfbfb;
     flex-direction: column;
+    clip-path: polygon(50% 5%, 60% 0, 100% 0, 100% 100%, 0 100%, 0 0, 40% 0);
     gap: 50px;
 }
 
