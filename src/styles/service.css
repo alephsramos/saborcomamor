@@ -28,18 +28,17 @@
     gap: 50px;
     width: 50%;
     border: 1px solid #353535;
-    padding: 20px;
+    padding: 50px;
     border-radius: 20px;
-    box-shadow: 0 0 5px #000;
 }
 
 .service div i {
     font-size: 5rem;
-    background-color: #353535;
-    width: 200px;
+    background-color: orange;
+    width: 150px;
     border-radius: 50%;
     color: #fbfbfb;
-    height: 200px;
+    height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;

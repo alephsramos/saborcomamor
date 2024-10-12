@@ -10,6 +10,24 @@
     flex-direction: column;
 }
 
+
+.promo span{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    color: #fbfbfb;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 10px 15px;
+    backdrop-filter: blur(20px);
+}
+
+.promo span b{
+    font-weight: 800;
+}
+
+
 .promo h1 {
     font-size: 4rem;
     font-family: "Dancing Script", cursive;

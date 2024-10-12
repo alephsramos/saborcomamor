@@ -1,5 +1,5 @@
 .sabores {
-    height: 80vh;
+    height: 65vh;
     width: 100%;
     padding: 0 5%;
     display: flex;
@@ -34,19 +34,41 @@
     justify-content: space-between;
     align-items: center;
     gap: 10px;
+    position: relative;
+    transition: transform .2s ease-in-out;
     flex-wrap: wrap; /* Permite que os itens quebrem linha se necessário */
+}
+
+.saborContainer span{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    color: #fbfbfb;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 10px 15px;
+    backdrop-filter: blur(20px);
+}
+
+.saborContainer span b{
+    font-weight: 800;
 }
 
 .sabor {
     border: 1px solid #353535;
-    border-radius: 10px;
+    border-radius: 15px 0 15px 0;
     padding: 10px;
     width: 24%;
-    height: 50vh;
+    height: 55vh;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
     justify-content: center;
+}
+
+.sabor:hover{
+    transform: scale(1.05)!important;
 }
 
 .sabor img {
@@ -59,7 +81,7 @@
 .sabor h2 {
     font-size: 2rem;
     font-family: "Dancing Script", cursive;
-    height: 20%;
+    height: 15%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -69,7 +91,7 @@
 .sabor ol {
     list-style-type: disc;
     margin-left: 20px;
-    height: 15%;
+    height: 20%;
 }
 
 .sabor ol li {
@@ -82,12 +104,18 @@
     width: 100%;
     margin-top: 20px;
     background-color: orange;
-    color: #fbfbfb;
-    border: 1px solid #fbfbfb;
+    color: #353535;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border: 1px solid #353535;
     font-weight: 500;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 5px 0 5px 0;
     transition: transform .1s ease-in;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 /* Media Queries para Responsividade */
