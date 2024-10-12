@@ -99,7 +99,7 @@ header nav ul a:hover {
     align-items: center;
     justify-content: center;
     position: relative;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 60% 95%, 50% 90%, 40% 95%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 55% 98%, 50% 90%, 45% 98%, 0 100%);
     z-index: 5;
     flex-direction: column;
     gap: 20px;
