@@ -32,6 +32,7 @@ header {
     align-items: center;
     justify-content: space-between;
     background-color: #fff;
+    clip-path: polygon(50% 0%, 100% 0, 100% 100%, 90% 95%, 10% 95%, 0 100%, 0 0);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
@@ -99,7 +100,7 @@ header nav ul a:hover {
     align-items: center;
     justify-content: center;
     position: relative;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 55% 98%, 50% 90%, 45% 98%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 55% 99%, 50% 95%, 45% 99%, 0 100%);
     z-index: 5;
     flex-direction: column;
     gap: 20px;
