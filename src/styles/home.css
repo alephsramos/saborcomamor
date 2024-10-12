@@ -12,6 +12,17 @@ html, body {
     scroll-behavior: smooth;
 }
 
+.background {
+    position: fixed; /* Fixa a imagem de fundo na tela */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/backComidas2.avif');
+    opacity: 0.05; /* Define a opacidade da imagem */
+    z-index: -1; /* Coloca o fundo atrás do conteúdo */
+}
+
 ::-webkit-scrollbar {
     background-color: #fbfbfb;
     width: 5px;
