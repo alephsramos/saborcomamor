@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="src/styles/sabores.css">
     <link rel="stylesheet" href="src/styles/sobre.css">
     <link rel="stylesheet" href="src/styles/promo.css">
+    <link rel="stylesheet" href="src/styles/depoimentos.css">
     <link rel="stylesheet" href="src/styles/service.css">
     <link rel="stylesheet" href="src/styles/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -163,6 +164,168 @@
             </div>
         </main>
     </section>
+
+    <section id="testimonials">
+        <h2>Depoimentos</h2>
+        
+        <form id="testimonial-form">
+            <input type="text" id="name" placeholder="Seu Nome" required>
+            <div class="rating">
+                <label for="stars">Avaliação: </label>
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+                <input type="hidden" id="rating" value="0" required>
+            </div>
+            <textarea id="opinion" placeholder="Seu Depoimento" required></textarea>
+            <input class="arquivo" type="file" id="imageUpload" accept="image/*">
+            <button class="enviar" type="submit">Enviar</button>
+        </form>
+    
+        <div id="testimonial-list"></div>
+        <button id="view-all" style="display: none;">Ver Todos os Depoimentos</button>
+        <div id="average-rating" style="text-align: center; margin-top: 20px; font-weight: bold;"></div>
+    </section>
+    
+    
+        
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('testimonial-form');
+    const nameInput = document.getElementById('name');
+    const opinionInput = document.getElementById('opinion');
+    const ratingInput = document.getElementById('rating');
+    const imageUpload = document.getElementById('imageUpload');
+    const testimonialList = document.getElementById('testimonial-list');
+    const viewAllButton = document.getElementById('view-all');
+    const feedbackMessage = document.createElement('div');
+    const modal = document.createElement('div');
+    const userId = 'user'; // Simulando um identificador único para o usuário (deve ser gerado dinamicamente em uma aplicação real)
+
+    modal.className = 'modal';
+    modal.textContent = "Obrigado pelo seu depoimento!";
+    document.body.appendChild(modal);
+
+    // Clear existing testimonials from localStorage for testing
+    // localStorage.clear(); // Use this line to clear localStorage for testing. Remove it later.
+
+    // Load existing testimonials from localStorage
+    loadTestimonials();
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = nameInput.value;
+        const opinion = opinionInput.value;
+        const rating = ratingInput.value;
+        const timestamp = new Date().toLocaleString(); // Get current date and time
+        const image = imageUpload.files[0];
+
+        // Check if rating is selected
+        if (rating === '0') {
+            alert("Por favor, escolha uma estrela antes de enviar."); // Alert if no rating selected
+            updateStarDisplay('0'); // Change star color to red
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            saveTestimonial(name, opinion, rating, timestamp, e.target.result);
+            nameInput.value = '';
+            opinionInput.value = '';
+            ratingInput.value = '0';
+            imageUpload.value = '';
+            showModal();
+            loadTestimonials();
+        };
+        
+        if (image) {
+            reader.readAsDataURL(image); // Read the image file as data URL
+        } else {
+            saveTestimonial(name, opinion, rating, timestamp, null); // Save without image
+            nameInput.value = '';
+            opinionInput.value = '';
+            ratingInput.value = '0';
+            showModal();
+            loadTestimonials();
+        }
+    });
+
+    function saveTestimonial(name, opinion, rating, timestamp, image) {
+        const testimonials = getTestimonials();
+        testimonials.push({ name, opinion, rating, timestamp, userId, image });
+        localStorage.setItem('testimonials', JSON.stringify(testimonials));
+    }
+
+    function getTestimonials() {
+        const testimonials = localStorage.getItem('testimonials');
+        return testimonials ? JSON.parse(testimonials) : [];
+    }
+
+    function loadTestimonials() {
+        const testimonials = getTestimonials().sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)); // Sort by timestamp
+        testimonialList.innerHTML = testimonials.map(testimonial => `
+            <div class="testimonial-item ${testimonial.rating == 5 ? 'five-star' : ''}">
+                <strong>${testimonial.name}</strong> - <span class="rating-stars">${'★'.repeat(testimonial.rating)}${'☆'.repeat(5 - testimonial.rating)}</span>
+                <p>${testimonial.opinion}</p>
+                ${testimonial.image ? `<img src="${testimonial.image}" alt="User Image" style="width: 100px; height: auto; margin-top: 10px;"/>` : ''}
+                <small class="timestamp">Comentado em: ${testimonial.timestamp}</small>
+                ${testimonial.userId === userId ? `<div class="seu-comentario">Seu comentário</div>` : ''}
+            </div>
+        `).join('');
+    }
+
+    function showModal() {
+        modal.style.display = 'block'; // Show the modal
+        setTimeout(() => {
+            modal.style.display = 'none'; // Hide after 1 second
+        }, 1000);
+    }
+
+    function showFeedbackMessage() {
+        feedbackMessage.textContent = "Obrigado pelo seu feedback!";
+        feedbackMessage.style.color = "green";
+        feedbackMessage.style.marginTop = "10px";
+        feedbackMessage.style.fontWeight = "bold";
+        feedbackMessage.style.textAlign = "center";
+        feedbackMessage.style.position = "fixed"; // Fixed position
+        feedbackMessage.style.width = "100%";
+        feedbackMessage.style.top = "10px"; // Position at the top
+        feedbackMessage.style.zIndex = "1000"; // Ensure it is above other elements
+        document.body.appendChild(feedbackMessage);
+        // No timeout to remove, so it stays fixed
+    }
+
+    function displayAverageRating(average) {
+        const averageDisplay = document.getElementById('average-rating');
+        averageDisplay.innerHTML = `<span style="color: gold;">★</span>: ${average.toFixed(1)}/5`; // Display average stars with gold icon
+    }
+
+    // Star rating functionality
+    document.querySelectorAll('.star').forEach(star => {
+        star.addEventListener('click', () => {
+            const rating = star.getAttribute('data-value');
+            ratingInput.value = rating;
+            updateStarDisplay(rating);
+        });
+    });
+
+    function updateStarDisplay(rating) {
+        document.querySelectorAll('.star').forEach(star => {
+            if (rating === '0') {
+                star.style.color = 'red'; // Change star color to red if no selection
+                star.style.borderColor = 'red'; // Red border for stars
+            } else {
+                star.style.color = star.getAttribute('data-value') <= rating ? 'gold' : '#ccc';
+                star.style.borderColor = 'transparent'; // Reset border color
+            }
+        });
+    }
+});
+
+
+    </script>
 
     <section class="service" data-aos="fade-up">
         <h1>Delivery</h1>

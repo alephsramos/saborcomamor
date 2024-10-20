@@ -1,0 +1,143 @@
+#testimonials {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    height: auto;
+    margin-bottom: 10vh;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: orange;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    position: relative; /* For positioning the error message */
+}
+
+.star {
+    cursor: pointer;
+    font-size: 30px;
+    color: gold;
+    transition: transform 0.2s;
+    border: 2px solid transparent; /* Border to control appearance */
+}
+
+.star:hover {
+    border-color: gold; /* Gold border on hover */
+}
+
+#testimonial-form input,
+#testimonial-form textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+#testimonial-list {
+    margin-top: 20px;
+}
+
+.testimonial-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+    transition: transform 0.3s;
+}
+
+.testimonial-item.five-star {
+    background-color: #f0f8ff; /* Light blue background for 5-star ratings */
+}
+
+.rating-stars {
+    color: gold; /* Default color for stars */
+}
+
+#view-all {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+#average-rating {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.star {
+    color: gold; /* Default color for stars */
+}
+
+.testimonial-item {
+    position: relative; /* Para permitir posicionamento dos elementos filhos */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.seu-comentario {
+    position: absolute; /* Posicionamento absoluto */
+    top: 10px; /* Distância do topo */
+    right: 15px; /* Distância da direita */
+    color: gold;
+}
+
+.timestamp {
+    position: absolute; /* Posicionamento absoluto */
+    bottom: 10px; /* Distância do fundo */
+    right: 15px; /* Distância da direita */
+    font-size: 12px; /* Tamanho da fonte para a data */
+    color: #666; /* Cor da data */
+}
+
+.modal {
+    display: none; /* Inicialmente escondido */
+    position: fixed; /* Fica fixo na tela */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* Centraliza */
+    padding: 20px;
+    background-color: white;
+    border: 2px solid green; /* Borda verde */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Acima de outros elementos */
+}
+
+.enviar{
+    padding: 7px 20px;
+    border: 2px solid black;
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: orange;
+    width: 100%;
+}
