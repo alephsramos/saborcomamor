@@ -219,6 +219,7 @@
             const ratingInput = document.getElementById('rating');
             const imageUpload = document.getElementById('imageUpload');
             const testimonialList = document.getElementById('testimonial-list');
+            const viewAllButton = document.getElementById('view-all');
             const modal = document.createElement('div');
             const userId = 'user'; // Simulando um identificador único para o usuário
     
@@ -253,7 +254,7 @@
                     imageUpload.value = '';
                     showModal();
                 };
-                
+    
                 if (image) {
                     reader.readAsDataURL(image); // Ler o arquivo de imagem como URL de dados
                 } else {
@@ -285,17 +286,27 @@
             async function loadTestimonials() {
                 const q = query(collection(db, "testimonials"), orderBy("timestamp", "desc"));
                 const querySnapshot = await getDocs(q);
-                testimonialList.innerHTML = querySnapshot.docs.map(doc => {
-                    const testimonial = doc.data();
+                const testimonials = querySnapshot.docs.map(doc => doc.data());
+    
+                // Atualizar a lista de depoimentos
+                testimonialList.innerHTML = testimonials.map(testimonial => {
                     return `
                         <div class="testimonial-item ${testimonial.rating == 5 ? 'five-star' : ''}">
                             <strong>${testimonial.name}</strong> - <span class="rating-stars">${'★'.repeat(testimonial.rating)}${'☆'.repeat(5 - testimonial.rating)}</span>
-                            <p class="comentario">${testimonial.opinion}</p>
+                            <p>${testimonial.opinion}</p>
                             ${testimonial.image ? `<img src="${testimonial.image}" alt="User Image" style="width: 100px; height: auto; margin-top: 10px;"/>` : ''}
                             <small class="timestamp">Comentado em: ${testimonial.timestamp}</small>
                         </div>
                     `;
                 }).join('');
+    
+                // Exibir ou ocultar o botão "Ver Todos os Comentários"
+                if (testimonials.length > 3) {
+                    viewAllButton.style.display = 'block';
+                    viewAllButton.textContent = `Ver Todos os Comentários (${testimonials.length})`;
+                } else {
+                    viewAllButton.style.display = 'none';
+                }
             }
     
             function showModal() {
@@ -327,6 +338,7 @@
             }
         });
     </script>
+    
     
 
 
