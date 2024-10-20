@@ -227,6 +227,9 @@
             modal.textContent = "Obrigado pelo seu depoimento!";
             document.body.appendChild(modal);
     
+            let allTestimonials = []; // Para armazenar todos os depoimentos
+            let visibleCount = 3; // Contador de comentários visíveis
+    
             // Carregar depoimentos existentes do Firestore
             loadTestimonials();
     
@@ -286,9 +289,34 @@
             async function loadTestimonials() {
                 const q = query(collection(db, "testimonials"), orderBy("timestamp", "desc"));
                 const querySnapshot = await getDocs(q);
-                const testimonials = querySnapshot.docs.map(doc => doc.data());
+                allTestimonials = querySnapshot.docs.map(doc => doc.data());
     
-                // Atualizar a lista de depoimentos
+                // Exibir apenas os primeiros 3 depoimentos
+                displayTestimonials(allTestimonials.slice(0, visibleCount));
+    
+                // Exibir ou ocultar o botão "Ver Mais"
+                if (allTestimonials.length > visibleCount) {
+                    viewAllButton.style.display = 'block';
+                    viewAllButton.textContent = `Ver Mais Comentários (${allTestimonials.length})`;
+                } else {
+                    viewAllButton.style.display = 'none';
+                }
+    
+                // Evento para o botão "Ver Mais"
+                viewAllButton.onclick = () => {
+                    // Aumenta o contador e exibe mais comentários
+                    visibleCount += 5;
+                    const newTestimonials = allTestimonials.slice(0, visibleCount);
+                    displayTestimonials(newTestimonials);
+    
+                    // Se todos os comentários foram carregados, oculte o botão
+                    if (newTestimonials.length >= allTestimonials.length) {
+                        viewAllButton.style.display = 'none';
+                    }
+                };
+            }
+    
+            function displayTestimonials(testimonials) {
                 testimonialList.innerHTML = testimonials.map(testimonial => {
                     return `
                         <div class="testimonial-item ${testimonial.rating == 5 ? 'five-star' : ''}">
@@ -299,14 +327,6 @@
                         </div>
                     `;
                 }).join('');
-    
-                // Exibir ou ocultar o botão "Ver Todos os Comentários"
-                if (testimonials.length > 3) {
-                    viewAllButton.style.display = 'block';
-                    viewAllButton.textContent = `Ver Todos os Comentários (${testimonials.length})`;
-                } else {
-                    viewAllButton.style.display = 'none';
-                }
             }
     
             function showModal() {
@@ -338,6 +358,8 @@
             }
         });
     </script>
+    
+    
     
     
 
