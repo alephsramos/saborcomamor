@@ -192,143 +192,142 @@
     
     
 
-<script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-    import { getFirestore, collection, addDoc, getDocs, orderBy, query } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
-  
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyDJ_OPl1iq2pub1Ux5Ck0MXLKOKxsA9vxU",
-      authDomain: "sabor-com-amor-7d875.firebaseapp.com",
-      projectId: "sabor-com-amor-7d875",
-      storageBucket: "sabor-com-amor-7d875.appspot.com",
-      messagingSenderId: "376104206695",
-      appId: "1:376104206695:web:b6c16b577f94f2125fefc2",
-      measurementId: "G-P7S7SF8TCR"
-    };
-  
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-  
-    document.addEventListener('DOMContentLoaded', () => {
-      const form = document.getElementById('testimonial-form');
-      const nameInput = document.getElementById('name');
-      const opinionInput = document.getElementById('opinion');
-      const ratingInput = document.getElementById('rating');
-      const imageUpload = document.getElementById('imageUpload');
-      const testimonialList = document.getElementById('testimonial-list');
-      const modal = document.createElement('div');
-      const userId = 'user'; // Simulando um identificador único para o usuário
-  
-      modal.className = 'modal';
-      modal.textContent = "Obrigado pelo seu depoimento!";
-      document.body.appendChild(modal);
-  
-      // Carregar depoimentos existentes do Firestore
-      loadTestimonials();
-  
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault(); // Previne o recarregamento da página
-        const name = nameInput.value;
-        const opinion = opinionInput.value;
-        const rating = ratingInput.value;
-        const timestamp = new Date().toLocaleString(); // Obter data e hora atual
-        const image = imageUpload.files[0];
-  
-        // Verifique se a classificação foi selecionada
-        if (rating === '0') {
-          alert("Por favor, escolha uma estrela antes de enviar."); // Alerta se a classificação não for selecionada
-          updateStarDisplay('0'); // Muda a cor da estrela para vermelho
-          return;
-        }
-  
-        const reader = new FileReader();
-        reader.onload = async function(e) {
-          await saveTestimonial(name, opinion, rating, timestamp, e.target.result);
-          nameInput.value = '';
-          opinionInput.value = '';
-          ratingInput.value = '0';
-          imageUpload.value = '';
-          showModal();
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs, orderBy, query } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+    
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDJ_OPl1iq2pub1Ux5Ck0MXLKOKxsA9vxU",
+            authDomain: "sabor-com-amor-7d875.firebaseapp.com",
+            projectId: "sabor-com-amor-7d875",
+            storageBucket: "sabor-com-amor-7d875.appspot.com",
+            messagingSenderId: "376104206695",
+            appId: "1:376104206695:web:b6c16b577f94f2125fefc2",
+            measurementId: "G-P7S7SF8TCR"
         };
-        
-        if (image) {
-          reader.readAsDataURL(image); // Ler o arquivo de imagem como URL de dados
-        } else {
-          await saveTestimonial(name, opinion, rating, timestamp, null); // Salvar sem imagem
-          nameInput.value = '';
-          opinionInput.value = '';
-          ratingInput.value = '0';
-          showModal();
-        }
-      });
-  
-      async function saveTestimonial(name, opinion, rating, timestamp, image) {
-        try {
-          await addDoc(collection(db, "testimonials"), {
-            name: name,
-            opinion: opinion,
-            rating: rating,
-            timestamp: timestamp,
-            userId: userId,
-            image: image
-          });
-          console.log("Depoimento salvo com sucesso!");
-          loadTestimonials(); // Atualiza a lista de depoimentos
-        } catch (error) {
-          console.error("Erro ao salvar depoimento: ", error);
-        }
-      }
-  
-      async function loadTestimonials() {
-        const q = query(collection(db, "testimonials"), orderBy("timestamp", "desc"));
-        const querySnapshot = await getDocs(q);
-        testimonialList.innerHTML = querySnapshot.docs.map(doc => {
-          const testimonial = doc.data();
-          return `
-            <div class="testimonial-item ${testimonial.rating == 5 ? 'five-star' : ''}">
-              <strong>${testimonial.name}</strong> - <span class="rating-stars">${'★'.repeat(testimonial.rating)}${'☆'.repeat(5 - testimonial.rating)}</span>
-              <p>${testimonial.opinion}</p>
-              ${testimonial.image ? `<img src="${testimonial.image}" alt="User Image" style="width: 100px; height: auto; margin-top: 10px;"/>` : ''}
-              <small class="timestamp">Comentado em: ${testimonial.timestamp}</small>
-              ${testimonial.userId === userId ? `<div class="seu-comentario">Seu comentário</div>` : ''}
-            </div>
-          `;
-        }).join('');
-      }
-  
-      function showModal() {
-        modal.style.display = 'block'; // Mostrar o modal
-        setTimeout(() => {
-          modal.style.display = 'none'; // Esconder após 1 segundo
-        }, 1000);
-      }
-  
-      // Funcionalidade de classificação por estrelas
-      document.querySelectorAll('.star').forEach(star => {
-        star.addEventListener('click', () => {
-          const rating = star.getAttribute('data-value');
-          ratingInput.value = rating;
-          updateStarDisplay(rating);
+    
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+    
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('testimonial-form');
+            const nameInput = document.getElementById('name');
+            const opinionInput = document.getElementById('opinion');
+            const ratingInput = document.getElementById('rating');
+            const imageUpload = document.getElementById('imageUpload');
+            const testimonialList = document.getElementById('testimonial-list');
+            const modal = document.createElement('div');
+            const userId = 'user'; // Simulando um identificador único para o usuário
+    
+            modal.className = 'modal';
+            modal.textContent = "Obrigado pelo seu depoimento!";
+            document.body.appendChild(modal);
+    
+            // Carregar depoimentos existentes do Firestore
+            loadTestimonials();
+    
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault(); // Previne o recarregamento da página
+                const name = nameInput.value;
+                const opinion = opinionInput.value;
+                const rating = ratingInput.value;
+                const timestamp = new Date().toLocaleString(); // Obter data e hora atual
+                const image = imageUpload.files[0];
+    
+                // Verifique se a classificação foi selecionada
+                if (rating === '0') {
+                    alert("Por favor, escolha uma estrela antes de enviar."); // Alerta se a classificação não for selecionada
+                    updateStarDisplay('0'); // Muda a cor da estrela para vermelho
+                    return;
+                }
+    
+                const reader = new FileReader();
+                reader.onload = async function(e) {
+                    await saveTestimonial(name, opinion, rating, timestamp, e.target.result);
+                    nameInput.value = '';
+                    opinionInput.value = '';
+                    ratingInput.value = '0';
+                    imageUpload.value = '';
+                    showModal();
+                };
+                
+                if (image) {
+                    reader.readAsDataURL(image); // Ler o arquivo de imagem como URL de dados
+                } else {
+                    await saveTestimonial(name, opinion, rating, timestamp, null); // Salvar sem imagem
+                    nameInput.value = '';
+                    opinionInput.value = '';
+                    ratingInput.value = '0';
+                    showModal();
+                }
+            });
+    
+            async function saveTestimonial(name, opinion, rating, timestamp, image) {
+                try {
+                    await addDoc(collection(db, "testimonials"), {
+                        name: name,
+                        opinion: opinion,
+                        rating: rating,
+                        timestamp: timestamp,
+                        userId: userId,
+                        image: image
+                    });
+                    console.log("Depoimento salvo com sucesso!");
+                    loadTestimonials(); // Atualiza a lista de depoimentos
+                } catch (error) {
+                    console.error("Erro ao salvar depoimento: ", error);
+                }
+            }
+    
+            async function loadTestimonials() {
+                const q = query(collection(db, "testimonials"), orderBy("timestamp", "desc"));
+                const querySnapshot = await getDocs(q);
+                testimonialList.innerHTML = querySnapshot.docs.map(doc => {
+                    const testimonial = doc.data();
+                    return `
+                        <div class="testimonial-item ${testimonial.rating == 5 ? 'five-star' : ''}">
+                            <strong>${testimonial.name}</strong> - <span class="rating-stars">${'★'.repeat(testimonial.rating)}${'☆'.repeat(5 - testimonial.rating)}</span>
+                            <p class="comentario">${testimonial.opinion}</p>
+                            ${testimonial.image ? `<img src="${testimonial.image}" alt="User Image" style="width: 100px; height: auto; margin-top: 10px;"/>` : ''}
+                            <small class="timestamp">Comentado em: ${testimonial.timestamp}</small>
+                        </div>
+                    `;
+                }).join('');
+            }
+    
+            function showModal() {
+                modal.style.display = 'block'; // Mostrar o modal
+                setTimeout(() => {
+                    modal.style.display = 'none'; // Esconder após 1 segundo
+                }, 1000);
+            }
+    
+            // Funcionalidade de classificação por estrelas
+            document.querySelectorAll('.star').forEach(star => {
+                star.addEventListener('click', () => {
+                    const rating = star.getAttribute('data-value');
+                    ratingInput.value = rating;
+                    updateStarDisplay(rating);
+                });
+            });
+    
+            function updateStarDisplay(rating) {
+                document.querySelectorAll('.star').forEach(star => {
+                    if (rating === '0') {
+                        star.style.color = 'red'; // Mudar a cor da estrela para vermelho se nenhuma seleção
+                        star.style.borderColor = 'red'; // Borda vermelha para as estrelas
+                    } else {
+                        star.style.color = star.getAttribute('data-value') <= rating ? 'gold' : '#ccc';
+                        star.style.borderColor = 'transparent'; // Resetar a cor da borda
+                    }
+                });
+            }
         });
-      });
-  
-      function updateStarDisplay(rating) {
-        document.querySelectorAll('.star').forEach(star => {
-          if (rating === '0') {
-            star.style.color = 'red'; // Mudar a cor da estrela para vermelho se nenhuma seleção
-            star.style.borderColor = 'red'; // Borda vermelha para as estrelas
-          } else {
-            star.style.color = star.getAttribute('data-value') <= rating ? 'gold' : '#ccc';
-            star.style.borderColor = 'transparent'; // Resetar a cor da borda
-          }
-        });
-      }
-    });
-  </script>
-  
+    </script>
+    
 
 
     <section class="service" data-aos="fade-up">
